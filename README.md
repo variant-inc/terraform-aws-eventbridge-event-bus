@@ -110,6 +110,7 @@ module "event_bus" {
   source = "github.com/variant-inc/terraform-aws-eventbridge-event-bus?ref=v1"
 
   name            = var.name
+  tags            = var.tags
   partner_source  = var.partner_source
 
   create_archive  = var.create_archive
