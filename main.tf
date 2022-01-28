@@ -5,6 +5,8 @@ data "aws_cloudwatch_event_source" "partner_source" {
 
 resource "aws_cloudwatch_event_bus" "event_bus" {
   name = length(var.partner_source) != 0 ? data.aws_cloudwatch_event_source.partner_source[0].name : var.name
+  tags = var.tags
+  
   event_source_name = length(var.partner_source) != 0 ? data.aws_cloudwatch_event_source.partner_source[0].name : null
 }
 

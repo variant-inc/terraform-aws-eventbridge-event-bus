@@ -3,6 +3,12 @@ variable "name" {
   type = string
 }
 
+variable "tags" {
+  type        = map(string)
+  description = "Tags for S3 bucket"
+  default     = {}
+}
+
 variable "partner_source" {
   description = "Name of partner event source."
   type = string

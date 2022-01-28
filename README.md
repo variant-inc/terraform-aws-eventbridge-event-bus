@@ -4,6 +4,7 @@
   - [Input Variables](#input-variables)
   - [Variable definitions](#variable-definitions)
     - [name](#name)
+    - [tags](#tags)
     - [partner_source](#partner_source)
     - [create_archive](#create_archive)
     - [description](#description)
@@ -20,6 +21,7 @@
 | Name     | Type    | Default   | Example     | Notes   |
 | -------- | ------- | --------- | ----------- | ------- |
 | name | string |  | "test-event_bus" |  |
+| tags | map(string) | {} | {"environment": "prod"} | |
 | partner_source | string | "" | "aws.partner/testpartner.com" |  |
 | create_archive | bool | false | true |  |
 | description | string | null | "Descriptrion of test event bus archive." |  |
@@ -33,6 +35,17 @@ Name of custom Event bus.
 If `partner_source` is used it will be forced to match it during creation but this custom one will be used for naming the archive if used.
 ```json
 "name": "<Event bus name>"
+```
+
+### tags
+Tags for created bucket.
+```json
+"tags": {<map of tag keys and values>}
+```
+
+Default:
+```json
+"tags": {}
 ```
 
 ### partner_source
@@ -110,6 +123,9 @@ module "event_bus" {
 ```json
 {
   "name": "test-event_bus",
+  "tags": {
+    "environment": "prod"
+  },
   "create_archive": true,
   "description": "Descriptrion of test event bus archive.",
   "retention_days": 183,
